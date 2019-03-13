@@ -1,0 +1,217 @@
+/* only for testing */
+
+html {
+  background: gray;
+}
+
+body {
+  margin: 5px auto;
+  min-width: 537px;
+  max-width: 658px;
+  background: white;
+  box-sizing: border-box;
+}
+/* actual post code */
+
+.izzyshipwrap {
+  --light: rgb(250, 250, 250);
+  --dark: rgb(237, 237, 237);
+  --darker: rgb(213, 213, 213);
+  --leftspace: 50px;
+  display: block;
+  width: 90%;
+  margin: 5px auto;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  position: relative;
+  top: 5px;
+  overflow: hidden;
+  background: white;
+  box-sizing: border-box;
+  font-family: "PT Sans", sans-serif;
+  line-height: 1.25;
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+  }
+
+  header {
+    display: grid;
+    grid-template: "tabs pokeball" "search search" / 1fr var(--leftspace);
+    align-items: center;
+    position: relative;
+    z-index: 3;
+    background: var(--darker);
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
+  }
+
+  pokeball {
+    grid-area: pokeball;
+    justify-self: center;
+    padding: 5px;
+    transition: 0.7s;
+
+    &:hover {
+      filter: grayscale(1);
+    }
+
+    img {
+      animation: pokeball 1s ease-in-out infinite alternate both;
+      transform-origin: 55% bottom;
+    }
+  }
+
+  tabs {
+    grid-area: tabs;
+    display: flex;
+    height: 100%;
+    padding-top: 5px;
+    padding-left: 5px;
+    align-self: end;
+    overflow: hidden;
+  }
+
+  tab {
+    flex: 1;
+    max-width: 140px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    transition: 0.25s;
+    position: relative;
+    border-radius: 10px 10px 0 0;
+
+    &:hover {
+      background: var(--dark);
+    }
+  }
+
+  tab.active {
+    background: var(--light);
+    z-index: 2;
+  }
+
+  searchbar {
+    grid-area: search;
+    background: var(--light);
+    padding: 7px 5px;
+  }
+
+  url {
+    display: inline-block;
+    background: var(--dark);
+    border-radius: 5px;
+    padding: 0.15em 0.75em;
+    width: 100%;
+
+    span {
+      color: rgb(56, 56, 56);
+    }
+  }
+
+  content > * {
+    display: block;
+    background: white;
+    height: 300px;
+    padding: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+
+  li {
+    margin-left: 1em;
+    position: relative;
+  }
+
+  ul:not(:first-child) {
+    margin-top: 1em;
+  }
+
+  relationships {
+    position: relative;
+
+    nav {
+      text-align: right;
+      position: sticky;
+      top: 0;
+      right: 5px;
+      width: min-content;
+      float: right;
+
+      a {
+        display: inline-block;
+        padding: 5px 0 5px 5px;
+
+        &.active,
+        &:hover {
+          font-weight: bold;
+        }
+      }
+    }
+
+    ul {
+      list-style: none;
+      width: calc(100% - 70px - 20px);
+    }
+
+    li::before {
+      position: absolute;
+      color: #252525;
+      left: -1em;
+      content: '>';
+      display: inline-block;
+    }
+
+    li:not(first-of-type) {
+      margin-top: 0.8em;
+    }
+  }
+
+  home {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+  &.billy home {
+    background-image: url("https://i.postimg.cc/JnJDsfqK/billyBob.png");
+  }
+
+  &.blake home {
+    background-image: url("https://i.postimg.cc/L8jxZkgP/chibi-Fied.png");
+  }
+
+  &.dani home {
+    background-image: url("https://i.postimg.cc/YCQdrB4v/just-Chillin-Smol.png");
+  }
+
+  hiddencontent {
+    display: none;
+  }
+
+  h3 {
+    margin-bottom: 0.5em;
+  }
+
+  :target:before {
+    content: "";
+    display: block;
+    height: 15px;
+    /* fixed header height*/
+    margin: -15px 0 0;
+    /* negative fixed header height */
+  }
+}
+@keyframes pokeball {
+  from {
+    transform: rotate(-10deg);
+  }
+
+  to {
+    transform: rotate(10deg);
+  }
+}
