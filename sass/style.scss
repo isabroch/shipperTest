@@ -37,6 +37,10 @@
     box-sizing: inherit;
   }
 
+  p {
+    margin: 0.75em 0;
+  }
+
   header {
     display: grid;
     grid-template: "tabs pokeball" "search search" / 1fr var(--leftspace);
